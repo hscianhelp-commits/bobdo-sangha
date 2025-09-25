@@ -17,14 +17,14 @@ const Layout = ({ children, showNavBars = true, title }: LayoutProps) => {
   };
 
   return (
-    <div className="min-h-screen bg-background flex flex-col max-w-md mx-auto lg:max-w-4xl">
+    <div className="min-h-screen bg-background flex flex-col max-w-md mx-auto">
       {showNavBars && (
         <TopNavBar 
           onNotificationClick={handleNotificationClick}
         />
       )}
       
-      <main className={`flex-1 ${showNavBars ? "pb-20 pt-4 lg:pb-4" : ""}`}>
+      <main className={`flex-1 ${showNavBars ? "pb-20 pt-4" : ""}`}>
         {title && (
           <div className="px-4 pb-4">
             <h1 className="text-2xl font-bold text-foreground font-bengali text-center">
@@ -35,7 +35,7 @@ const Layout = ({ children, showNavBars = true, title }: LayoutProps) => {
         {children}
       </main>
       
-      {showNavBars && <div className="lg:hidden"><BottomNavBar /></div>}
+      {showNavBars && <BottomNavBar />}
     </div>
   );
 };
