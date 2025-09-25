@@ -1,0 +1,153 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* BOBDO Design System - Blood Donation Organization
+All colors MUST be HSL. */
+
+@layer base {
+  :root {
+    /* Background colors */
+    --background: 0 0% 98%;
+    --foreground: 0 0% 20%;
+
+    /* Card system */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 20%;
+
+    /* Popover system */
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 20%;
+
+    /* BOBDO Primary Colors - Red Theme */
+    --primary: 0 70% 50%; /* #D32F2F equivalent */
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 0 70% 45%;
+    --primary-light: 0 70% 90%;
+
+    /* Secondary - White/Light */
+    --secondary: 0 0% 97%;
+    --secondary-foreground: 0 0% 20%;
+
+    /* Success/Green for highlights */
+    --success: 120 50% 40%; /* #388E3C equivalent */
+    --success-foreground: 0 0% 100%;
+    --success-light: 120 50% 90%;
+
+    /* Muted grays */
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+
+    /* Accent colors */
+    --accent: 0 0% 96%;
+    --accent-foreground: 0 0% 20%;
+
+    /* Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders and inputs */
+    --border: 0 0% 90%;
+    --input: 0 0% 95%;
+    --ring: 0 70% 50%;
+
+    /* Border radius */
+    --radius: 12px;
+
+    /* Gradients and effects */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(0 70% 60%));
+    --gradient-success: linear-gradient(135deg, hsl(var(--success)), hsl(120 50% 50%));
+    --shadow-card: 0 4px 12px hsl(0 0% 0% / 0.1);
+    --shadow-hover: 0 8px 24px hsl(0 0% 0% / 0.15);
+    
+    /* Animation and transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.2s ease;
+  }
+
+  /* Dark mode - keeping minimal since not priority */
+  .dark {
+    --background: 0 0% 10%;
+    --foreground: 0 0% 95%;
+    --card: 0 0% 15%;
+    --card-foreground: 0 0% 95%;
+    --primary: 0 70% 55%;
+    --border: 0 0% 25%;
+    --input: 0 0% 20%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-bengali;
+    font-family: 'Noto Sans Bengali', 'Roboto', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--muted));
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 3px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary));
+  }
+}
+
+@layer components {
+  /* BOBDO Card variants */
+  .card-primary {
+    @apply bg-gradient-to-br from-red-50 to-red-100 border-red-200;
+  }
+  
+  .card-success {
+    @apply bg-gradient-to-br from-green-50 to-green-100 border-green-200;
+  }
+  
+  /* Button ripple effect */
+  .btn-ripple {
+    @apply relative overflow-hidden transform transition-all duration-200 active:scale-95;
+  }
+  
+  .btn-ripple::before {
+    content: '';
+    @apply absolute top-1/2 left-1/2 w-0 h-0 bg-white/30 rounded-full transition-all duration-300 -translate-x-1/2 -translate-y-1/2;
+  }
+  
+  .btn-ripple:active::before {
+    @apply w-full h-full;
+  }
+
+  /* Page transitions */
+  .page-enter {
+    @apply opacity-0 translate-y-4;
+  }
+  
+  .page-enter-active {
+    @apply opacity-100 translate-y-0 transition-all duration-300;
+  }
+  
+  /* Navigation styles */
+  .nav-item-active {
+    @apply text-primary bg-primary/10 rounded-lg;
+  }
+  
+  /* Card hover effects */
+  .service-card {
+    @apply transition-all duration-200 hover:shadow-lg hover:-translate-y-1 cursor-pointer;
+  }
+}
