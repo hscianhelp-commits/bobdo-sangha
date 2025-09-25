@@ -1,16 +1,54 @@
-import { Bell } from "lucide-react";
+import { Bell, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import HamburgerMenu from "./HamburgerMenu";
+import { useState, useEffect } from "react";
 
 interface TopNavBarProps {
   onNotificationClick?: () => void;
   onMenuClick?: () => void;
 }
 
+interface BeforeInstallPromptEvent extends Event {
+  prompt(): Promise<void>;
+  userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }>;
+}
+
 const TopNavBar = ({ onNotificationClick, onMenuClick }: TopNavBarProps) => {
+  const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
+  const [showInstallButton, setShowInstallButton] = useState(false);
+
+  useEffect(() => {
+    const handler = (e: Event) => {
+      e.preventDefault();
+      setDeferredPrompt(e as BeforeInstallPromptEvent);
+      setShowInstallButton(true);
+    };
+
+    window.addEventListener('beforeinstallprompt', handler);
+
+    // Check if app is already installed
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+    if (isStandalone) {
+      setShowInstallButton(false);
+    }
+
+    return () => window.removeEventListener('beforeinstallprompt', handler);
+  }, []);
+
+  const handleInstall = async () => {
+    if (!deferredPrompt) return;
+
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    
+    if (outcome === 'accepted') {
+      setDeferredPrompt(null);
+      setShowInstallButton(false);
+    }
+  };
   return (
     <div className="sticky top-0 z-50 bg-card border-b border-border shadow-sm">
-      <div className="flex items-center justify-between px-4 py-3 max-w-md mx-auto">
+      <div className="flex items-center justify-between px-4 py-3 max-w-md mx-auto lg:max-w-4xl">
         {/* Logo and App Name */}
         <div className="flex items-center gap-2">
           <img 
@@ -26,6 +64,17 @@ const TopNavBar = ({ onNotificationClick, onMenuClick }: TopNavBarProps) => {
         
         {/* Actions */}
         <div className="flex items-center gap-2">
+          {showInstallButton && (
+            <Button
+              variant="outline"
+              size="sm"
+              className="hidden sm:flex h-8 px-3 text-xs font-bengali"
+              onClick={handleInstall}
+            >
+              <Download className="h-3 w-3 mr-1" />
+              ইনস্টল
+            </Button>
+          )}
           <Button
             variant="ghost"
             size="sm"
@@ -34,6 +83,16 @@ const TopNavBar = ({ onNotificationClick, onMenuClick }: TopNavBarProps) => {
           >
             <Bell className="h-4 w-4" />
           </Button>
+          {showInstallButton && (
+            <Button
+              variant="ghost"
+              size="sm"
+              className="sm:hidden p-2 h-8 w-8"
+              onClick={handleInstall}
+            >
+              <Download className="h-4 w-4" />
+            </Button>
+          )}
           <HamburgerMenu onMenuClick={onMenuClick} />
         </div>
       </div>
