@@ -1,0 +1,54 @@
+{
+  "name": "বগুড়া অনলাইন রক্তদান সংগঠন (BOBDO)",
+  "short_name": "BOBDO",
+  "description": "বগুড়া অনলাইন রক্তদান সংগঠন - রক্তদান ও জরুরি সেবা",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#D32F2F",
+  "orientation": "portrait",
+  "scope": "/",
+  "lang": "bn",
+  "icons": [
+    {
+      "src": "/images/bobdo-icon.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/bobdo-icon.png", 
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["medical", "social", "utilities"],
+  "dir": "ltr",
+  "shortcuts": [
+    {
+      "name": "জরুরি যোগাযোগ",
+      "short_name": "Emergency",
+      "description": "জরুরি যোগাযোগের নম্বর",
+      "url": "/emergency",
+      "icons": [
+        {
+          "src": "/images/emergency-icon.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "ডোনার খুঁজুন",
+      "short_name": "Find Donor",
+      "description": "রক্তদাতা খুঁজুন",
+      "url": "/find-donor",
+      "icons": [
+        {
+          "src": "/images/emergency-icon.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ]
+}

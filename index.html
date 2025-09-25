@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google-site-verification" content="A0IVSpMPJp31gNQG5Y2TinipS6zarnk0EssxWAPG5So" />
+    
+    <!-- Primary Meta Tags -->
+    <title>বগুড়া অনলাইন রক্তদান সংগঠন (BOBDO)</title>
+    <meta name="description" content="বগুড়া জেলার বৃহত্তম অনলাইন রক্তদান সংগঠন। জরুরি ভিত্তিতে রক্তদাতা খুঁজুন ও রক্তদান করুন। আমরা ২৪/৭ রক্তদান সেবা প্রদান করি।" />
+    <meta name="keywords" content="বগুড়া রক্তদান, জরুরি রক্ত, বগুড়া ব্লাড ডোনেশন, BOBDO, Bogura Blood Donation, রক্তদাতা খুঁজুন, রক্তদান সংগঠন" />
+    <meta name="author" content="বগুড়া অনলাইন রক্তদান সংগঠন" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://bobdo.vercel.app" />
+    <meta property="og:title" content="বগুড়া অনলাইন রক্তদান সংগঠন (BOBDO) | জরুরি রক্তদান সেবা" />
+    <meta property="og:description" content="বগুড়া জেলার বৃহত্তম অনলাইন রক্তদান সংগঠন। জরুরি ভিত্তিতে রক্তদাতা খুঁজুন ও রক্তদান করুন।" />
+    <meta property="og:image" content="https://i.postimg.cc/0jjP5DDJ/HSC-20250819-012635-0000.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://bobdo.vercel.app" />
+    <meta property="twitter:title" content="বগুড়া অনলাইন রক্তদান সংগঠন (BOBDO) | জরুরি রক্তদান সেবা" />
+    <meta property="twitter:description" content="বগুড়া জেলার বৃহত্তম অনলাইন রক্তদান সংগঠন। জরুরি ভিত্তিতে রক্তদাতা খুঁজুন ও রক্তদান করুন।" />
+    <meta property="twitter:image" content="https://i.postimg.cc/0jjP5DDJ/HSC-20250819-012635-0000.png" />
+
+    <!-- PWA Configuration -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#D32F2F" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="BOBDO" />
+    <link rel="apple-touch-icon" href="https://i.postimg.cc/0jjP5DDJ/HSC-20250819-012635-0000.png" />
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/0jjP5DDJ/HSC-20250819-012635-0000.png" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Noto+Sans+Bengali:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://bobdo.org/" />
+
+    <!-- Structured Data / Schema Markup -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NGO",
+      "name": "বগুড়া অনলাইন রক্তদান সংগঠন (BOBDO)",
+      "url": "https://bobdo.vercel.app",
+      "logo": "https://i.postimg.cc/0jjP5DDJ/HSC-20250819-012635-0000.png",
+      "description": "বগুড়া জেলার বৃহত্তম অনলাইন রক্তদান সংগঠন। জরুরি ভিত্তিতে রক্তদাতা খুঁজুন ও রক্তদান করুন।",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bogura",
+        "addressRegion": "Rajshahi",
+        "addressCountry": "Bangladesh"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+8801722528164",
+        "contactType": "customer service",
+        "areaServed": "Bangladesh",
+        "availableLanguage": "bn"
+      }
+    }
+    </script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      // Register service worker
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then((registration) => {
+              console.log('SW registered: ', registration);
+            })
+            .catch((registrationError) => {
+              console.log('SW registration failed: ', registrationError);
+            });
+        });
+      }
+    </script>
+  </body>
+</html>
