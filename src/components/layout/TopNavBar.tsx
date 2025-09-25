@@ -15,7 +15,7 @@ interface BeforeInstallPromptEvent extends Event {
 
 const TopNavBar = ({ onNotificationClick, onMenuClick }: TopNavBarProps) => {
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
-  const [showInstallButton, setShowInstallButton] = useState(false);
+  const [showInstallButton, setShowInstallButton] = useState(true); // Always show for now
 
   useEffect(() => {
     const handler = (e: Event) => {
@@ -36,7 +36,11 @@ const TopNavBar = ({ onNotificationClick, onMenuClick }: TopNavBarProps) => {
   }, []);
 
   const handleInstall = async () => {
-    if (!deferredPrompt) return;
+    if (!deferredPrompt) {
+      // Fallback for browsers that don't support install prompt
+      alert('অ্যাপ ইনস্টল করতে ব্রাউজারের মেনু থেকে "অ্যাপ ইনস্টল করুন" বা "Add to Home Screen" অপশন ব্যবহার করুন।');
+      return;
+    }
 
     deferredPrompt.prompt();
     const { outcome } = await deferredPrompt.userChoice;
